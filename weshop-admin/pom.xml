@@ -9,8 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>weshop-user</artifactId>
-
+    <artifactId>weshop-admin</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -20,8 +19,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-
-     
+        
         <!--springCloud-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -62,4 +60,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

@@ -9,6 +9,7 @@
         <module>weshopuser</module>
         <module>weshopuserapi</module>
         <module>weshopeurekaserver</module>
+        <module>weshop-admin</module>
     </modules>
 
     <packaging>pom</packaging>

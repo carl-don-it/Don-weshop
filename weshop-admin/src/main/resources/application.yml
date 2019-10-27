@@ -1,9 +1,9 @@
 spring:
   application:
-    name: weshop-user
+    name: weshop-admin
 
 server:
-  port: ${PORT:8011}
+  port: ${PORT:8021}
   servlet:
     context-path: /shop
 
