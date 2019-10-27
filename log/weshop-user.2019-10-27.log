@@ -358,3 +358,22 @@ Verify the connector's configuration, identify and stop any process that's liste
 2019-10-27 17:05:27.467  INFO 15168 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/shop]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2019-10-27 17:05:27.467  INFO 15168 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2019-10-27 17:05:27.474  INFO 15168 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2019-10-27 17:31:02.862  INFO 8472 --- [main] t.w.weshop.user.WeshopUserApplication    : Starting WeshopUserApplication on LAPTOP-8E5RVM64 with PID 8472 (D:\project\weshopparent\weshopuser\target\classes started by TJR_S in D:\project\weshopparent)
+2019-10-27 17:31:02.866 DEBUG 8472 --- [main] t.w.weshop.user.WeshopUserApplication    : Running with Spring Boot v2.1.8.RELEASE, Spring v5.1.9.RELEASE
+2019-10-27 17:31:02.867  INFO 8472 --- [main] t.w.weshop.user.WeshopUserApplication    : No active profile set, falling back to default profiles: default
+2019-10-27 17:31:05.162  INFO 8472 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-10-27 17:31:05.199  INFO 8472 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-10-27 17:31:05.199  INFO 8472 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.24]
+2019-10-27 17:31:05.369  INFO 8472 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/shop]   : Initializing Spring embedded WebApplicationContext
+2019-10-27 17:31:05.369  INFO 8472 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2397 ms
+2019-10-27 17:31:05.835  INFO 8472 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-10-27 17:31:06.139  INFO 8472 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-10-27 17:31:06.168  INFO 8472 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-10-27 17:31:06.205  INFO 8472 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-10-27 17:31:06.370  WARN 8472 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(tech.wetech.weshop.common.utils.Criteria<tech.wetech.weshop.user.po.User,java.lang.Object>) -> ModelContext{groupName=default, type=tech.wetech.weshop.common.utils.Criteria<tech.wetech.weshop.user.po.User,java.lang.Object>, isReturnType=false}. java.lang.IllegalArgumentException: Can not create TypeBinding for class tech.wetech.weshop.common.utils.Criteria$Statement with 2 type parameters: class expects 1
+2019-10-27 17:31:06.372  WARN 8472 --- [main] s.d.s.p.CachingModelPropertiesProvider   : Exception calculating properties for model(tech.wetech.weshop.common.utils.Criteria<tech.wetech.weshop.user.po.User,java.lang.Object>) -> ModelContext{groupName=default, type=tech.wetech.weshop.common.utils.Criteria<tech.wetech.weshop.user.po.User,java.lang.Object>, isReturnType=false}. java.lang.IllegalArgumentException: Can not create TypeBinding for class tech.wetech.weshop.common.utils.Criteria$Statement with 2 type parameters: class expects 1
+2019-10-27 17:31:06.512  INFO 8472 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/shop'
+2019-10-27 17:31:06.515  INFO 8472 --- [main] t.w.weshop.user.WeshopUserApplication    : Started WeshopUserApplication in 4.188 seconds (JVM running for 5.098)
+2019-10-27 17:31:15.308  INFO 8472 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/shop]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-27 17:31:15.309  INFO 8472 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-10-27 17:31:15.316  INFO 8472 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
