@@ -8,6 +8,7 @@
         <module>weshopcommon</module>
         <module>weshopuser</module>
         <module>weshopuserapi</module>
+        <module>weshopeurekaserver</module>
     </modules>
 
     <packaging>pom</packaging>

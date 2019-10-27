@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: weshop-user
+
+server:
+  port: 8080
+  servlet:
+    context-path: /shop
