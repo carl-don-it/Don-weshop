@@ -15,8 +15,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 //@SpringCloudApplication
 //@EnableWebMvc
 @SpringBootApplication
-@EnableDiscoveryClient
 @ComponentScan("tech.wetech.weshop")
+@EnableDiscoveryClient
 @EnableFeignClients("tech.wetech.weshop.*.api")
 public class WeshopAdminApplication {
 

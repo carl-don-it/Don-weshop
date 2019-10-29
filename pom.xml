@@ -5,10 +5,10 @@
 
     <name>weshop</name>
     <modules>
-        <module>weshopcommon</module>
-        <module>weshopuser</module>
-        <module>weshopuserapi</module>
-        <module>weshopeurekaserver</module>
+        <module>weshop-common</module>
+        <module>weshop-user</module>
+        <module>weshop-user-api</module>
+        <module>weshop-eureka-server</module>
         <module>weshop-admin</module>
     </modules>
 
@@ -128,6 +128,21 @@
         </dependencies>
     </dependencyManagement>
 
+    <repositories>
+        <repository>
+            <id>aliyun</id>
+            <name>aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>aliyun</id>
+            <name>aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <build>
         <plugins>
