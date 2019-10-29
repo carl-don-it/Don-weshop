@@ -9,16 +9,16 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import tk.mybatis.spring.annotation.MapperScan;
 
 //@SpringCloudApplication
 //@EnableWebMvc
-//@EnableSwagger2
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableFeignClients("tech.wetech.weshop.*.api")
 @ComponentScan(value = "tech.wetech.weshop")
-//@EnableFeignClients("tech.wetech.weshop.*.api")
+@MapperScan(basePackages = "tech.wetech.weshop.*.mapper")
 //@EnableCaching
-//@MapperScan(basePackages = "tech.wetech.weshop.*.mapper")
 public class WeshopUserApplication {
 
     public static void main(String[] args) {

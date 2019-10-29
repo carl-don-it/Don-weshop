@@ -19,7 +19,7 @@ import java.util.List;
 public abstract class BaseApi<T> implements Api<T> {
 
     @Autowired
-    protected IService<T> service;
+    protected IService<T> service;//需要实现自己的service，注入的时候看泛型
 
     @Override
     public Result<List<T>> queryAll() {

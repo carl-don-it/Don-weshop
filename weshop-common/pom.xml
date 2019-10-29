@@ -37,5 +37,12 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <!--mybatis-->
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>2.1.5</version>
+        </dependency>
     </dependencies>
 </project>
