@@ -54,6 +54,7 @@ public class Reflections {
         return arr;
     }
 
+    //B完全没有意义啊，wtf
     public static <A, B> String fnToFieldName(Fn<A, B> fn) {
         try {
             SerializedLambda serializedLambda = getSerializedLambda(fn);
@@ -70,6 +71,7 @@ public class Reflections {
         return null;
     }
 
+    //好像没有用到这个方法
     private static SerializedLambda getSerializedLambda(Fn fn) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Method method = fn.getClass().getDeclaredMethod("writeReplace");
         method.setAccessible(Boolean.TRUE);

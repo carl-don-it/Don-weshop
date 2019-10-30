@@ -1,5 +1,7 @@
 package tech.wetech.weshop.common.utils;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -10,16 +12,24 @@ import java.util.stream.Collectors;
 
 /**
  * 需要结合jpa注解一起使用
+ * <p>
+ * 用于生成sql语句，转化为java String拼接，不好用，繁琐
  *
- * @author cjbi@outlook.com
+ * @param <A> 具体的po类对象
+ * @param <B> Fn<A, B>中的B，具体到方法来说，String比较和是，项目基本使用Object * @author cjbi@outlook.com
  */
+@Data
 public class Criteria<A, B> implements Serializable {
 
     private Statement statement;
 
-    //缓存
+    //缓存Criteria<A, B>
     private static final Map<Class<?>, EntityTable> entityTableCache = new ConcurrentHashMap<>();
 
+    /**
+     * 构建具体sql语句所需要的各部分，Criteria<A, B>的大部分方法就是为了构建这个东西
+     */
+    @Data
     public static class Statement<A> {
 
         //类名
@@ -41,85 +51,21 @@ public class Criteria<A, B> implements Serializable {
         private String[] sortNames;
 
         private String sortOrder;
-
-        public Class<A> getClazz() {
-            return clazz;
-        }
-
-        public void setClazz(Class<A> clazz) {
-            this.clazz = clazz;
-        }
-
-        public String[] getFields() {
-            return fields;
-        }
-
-        public void setFields(String[] fields) {
-            this.fields = fields;
-        }
-
-        public List<Criterion> getCriterions() {
-            return criterions;
-        }
-
-        public void setCriterions(List<Criterion> criterions) {
-            this.criterions = criterions;
-        }
-
-        public int getPageNum() {
-            return pageNum;
-        }
-
-        public void setPageNum(int pageNum) {
-            this.pageNum = pageNum;
-        }
-
-        public int getPageSize() {
-            return pageSize;
-        }
-
-        public void setPageSize(int pageSize) {
-            this.pageSize = pageSize;
-        }
-
-        public String[] getSortNames() {
-            return sortNames;
-        }
-
-        public void setSortNames(String[] sortNames) {
-            this.sortNames = sortNames;
-        }
-
-        public String getSortOrder() {
-            return sortOrder;
-        }
-
-        public void setSortOrder(String sortOrder) {
-            this.sortOrder = sortOrder;
-        }
     }
 
+    /**
+     * 该po所对应的所有field和properties
+     */
+    @Data
     public static class EntityTable {
         private String tableName;
         private Map<String, String> fieldsMap;
-
-        public String getTableName() {
-            return tableName;
-        }
-
-        public void setTableName(String tableName) {
-            this.tableName = tableName;
-        }
-
-        public Map<String, String> getFieldsMap() {
-            return fieldsMap;
-        }
-
-        public void setFieldsMap(Map<String, String> fieldsMap) {
-            this.fieldsMap = fieldsMap;
-        }
     }
 
+    /**
+     * statement中具体查询条件，orm思维
+     */
+    @Data
     public static class Criterion {
         private String property;
         private Object value;
@@ -141,7 +87,6 @@ public class Criteria<A, B> implements Serializable {
             this.andOr = andOr;
             this.valueType = ValueType.noValue;
         }
-
 
         public Criterion(String property, Object value, String condition, String andOr) {
             this.property = property;
@@ -165,53 +110,6 @@ public class Criteria<A, B> implements Serializable {
             this.valueType = ValueType.betweenValue;
         }
 
-        public String getProperty() {
-            return property;
-        }
-
-        public void setProperty(String property) {
-            this.property = property;
-        }
-
-        public Object getValue() {
-            return value;
-        }
-
-        public void setValue(Object value) {
-            this.value = value;
-        }
-
-        public Object getSecondValue() {
-            return secondValue;
-        }
-
-        public void setSecondValue(Object secondValue) {
-            this.secondValue = secondValue;
-        }
-
-        public String getCondition() {
-            return condition;
-        }
-
-        public void setCondition(String condition) {
-            this.condition = condition;
-        }
-
-        public String getAndOr() {
-            return andOr;
-        }
-
-        public void setAndOr(String andOr) {
-            this.andOr = andOr;
-        }
-
-        public ValueType getValueType() {
-            return valueType;
-        }
-
-        public void setValueType(ValueType valueType) {
-            this.valueType = valueType;
-        }
     }
 
     /**
@@ -222,7 +120,7 @@ public class Criteria<A, B> implements Serializable {
     private void cacheEntityTable(Class<A> entityClass) {
         if (!entityTableCache.containsKey(entityClass)) {
             Table table = entityClass.getAnnotation(Table.class);
-            Map<String, String> fieldsMap = new LinkedHashMap<>();
+            Map<String, String> fieldsMap = new LinkedHashMap<>();//<fieldName,columnName>
             Field[] declaredFields = entityClass.getDeclaredFields();
 
             for (Field declaredField : declaredFields) {
@@ -252,6 +150,14 @@ public class Criteria<A, B> implements Serializable {
         statement.clazz = entityClass;
     }
 
+    /**
+     * 静态创建Criteria,第一次不赋值那么B都是Object了
+     *
+     * @param entityClass
+     * @param <A>
+     * @param <B>
+     * @return
+     */
     public static <A, B> Criteria<A, B> of(Class<A> entityClass) {
         return new Criteria<>(entityClass);
     }
@@ -414,7 +320,7 @@ public class Criteria<A, B> implements Serializable {
     }
 
     /**
-     * 构建普通sql
+     * 最终方法之一：构建普通sql
      *
      * @return
      */
@@ -430,7 +336,7 @@ public class Criteria<A, B> implements Serializable {
     }
 
     /**
-     * 构建统计的sql
+     * 最终方法之二：构建统计的sql
      *
      * @return
      */
@@ -443,14 +349,20 @@ public class Criteria<A, B> implements Serializable {
         return sql.toString();
     }
 
+    /**
+     * 用于根据statement生成具体的sql语句
+     */
     public static class SqlHelper {
-
+        /**
+         * 决定要查找哪些列
+         */
         public static String selectColumns(Statement statement) {
             StringBuilder selectColumns = new StringBuilder("select ");
             EntityTable entityTable = entityTableCache.get(statement.clazz);
+            //从statement中一个个拿出来，拼接
             if (statement.fields != null && statement.fields.length > 0) {
-                List<String> columns = new ArrayList();
-                for (Object fieldStr : statement.fields) {
+                List<String> columns = new ArrayList<>();
+                for (String fieldStr : statement.fields) {//TODO 改为String
                     columns.add(entityTable.fieldsMap.get(fieldStr));
                 }
                 return selectColumns.append(String.join(",", columns)).toString();
@@ -526,6 +438,7 @@ public class Criteria<A, B> implements Serializable {
             return whereClause.toString();
         }
 
+        //这里有问题，每个sortName都可以特有的sortOrder，不一定只有一个
         public static String orderByClause(Statement statement) {
             if (statement.sortNames == null) {
                 return "";
@@ -538,9 +451,11 @@ public class Criteria<A, B> implements Serializable {
                 }
                 orderByClause.append(entityTable.fieldsMap.get(statement.sortNames[i])).append(",");
             }
+            //删除最后的","
             if (orderByClause.length() > 0) {
                 orderByClause.deleteCharAt(orderByClause.length() - 1);
             }
+            //加上最后的排序
             if (statement.sortOrder != null) {
                 orderByClause.append(" " + statement.sortOrder);
             }
@@ -561,11 +476,4 @@ public class Criteria<A, B> implements Serializable {
 
     }
 
-    public Statement getStatement() {
-        return statement;
-    }
-
-    public void setStatement(Statement statement) {
-        this.statement = statement;
-    }
 }

@@ -8,7 +8,7 @@
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="username" property="username" jdbcType="VARCHAR"/>
         <result column="password" property="password" jdbcType="VARCHAR"/>
-        <result column="gender" property="gender" jdbcType="VARCHAR"/>
+        <result column="gender" property="gender" jdbcType="TINYINT"/><!--配置TINYINT的时候 focus 这里的数字是对应枚举类的顺序，0开始-->
         <result column="birthday" property="birthday" jdbcType="DATE"/>
         <result column="register_time" property="registerTime" jdbcType="TIMESTAMP"/>
         <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP"/>
@@ -20,4 +20,8 @@
         <result column="avatar" property="avatar" jdbcType="VARCHAR"/>
         <result column="wechat_open_id" property="wechatOpenId" jdbcType="VARCHAR"/>
     </resultMap>
+
+    <select id="testXml" resultType="tech.wetech.weshop.user.po.User">
+    select * from weshop_user where id=1
+</select>
 </mapper>

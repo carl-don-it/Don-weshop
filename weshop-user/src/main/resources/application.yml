@@ -32,3 +32,15 @@ eureka:
     prefer-ip-address: true #将自己的ip地址注册到Eureka服务中
     ip-address: ${IP_ADDRESS:127.0.0.1}
     instance-id: ${spring.application.name}:${server.port} #指定实例id
+
+# mybatis配置
+mapper:
+    identity: MYSQL
+    mappers: tech.wetech.weshop.common.utils.MyMapper
+    not-empty: false
+# 通用mapper配置
+mybatis:
+    configuration:
+        default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+        map-underscore-to-camel-case: true
+    mapper-locations: classpath:mybatis/mapper/*.xml
