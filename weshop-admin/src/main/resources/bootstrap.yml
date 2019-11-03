@@ -6,4 +6,4 @@
 #spring.cloud.config.profile=@env@
 #spring.cloud.config.name=weshop-user,datasource,common
 #spring.main.allow-bean-definition-overriding=true
-#todo 为什么一定要这个文件
+# 为什么一定要这个文件 logback配置
