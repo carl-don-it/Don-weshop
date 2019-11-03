@@ -34,9 +34,10 @@ public class Swagger2Configuration {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 // 设置页面标题
-                .title("学成网api文档")
+                .title("weshop商城")
                 // 描述
-                .description("学成网api文档")
+                .description("weshop商城api文档")
+                .description("weshop商城api文档")
                 //联系人
                 .contact(new Contact("Don","url","email"))
                 //url前缀
