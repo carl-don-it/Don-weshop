@@ -1,0 +1,11 @@
+# mybatis配置
+mapper:
+    identity: MYSQL
+    mappers: tech.wetech.weshop.common.utils.MyMapper
+    not-empty: false
+# 通用mapper配置
+mybatis:
+    configuration:
+        default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+        map-underscore-to-camel-case: true
+    mapper-locations: classpath:mybatis/mapper/*.xml

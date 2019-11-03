@@ -1,0 +1,4 @@
+eureka:
+    client:
+        service-url:
+            defaultZone: ${EUREKA_SERVER:http://shop-eureka1:8001/shop/eureka/,http://shop-eureka2:8002/shop/eureka/}
