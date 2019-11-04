@@ -1,0 +1,28 @@
+eureka:
+    client:
+        registerWithEureka: true #服务注册开关
+        fetchRegistry: true #服务发现开关
+        service-url:
+            defaultZone: ${EUREKA_SERVER:http://shop-eureka1:8001/shop/eureka/,http://shop-eureka2:8002/shop/eureka/}
+    instance:
+        prefer-ip-address: true #将自己的ip地址注册到Eureka服务中
+        ip-address: ${IP_ADDRESS:127.0.0.1}
+        instance-id: ${spring.application.name}:${server.port} #指定实例id
+
+server:
+    port: 0
+    servlet:
+          context-path: /shop
+
+spring:
+    application:
+        name: weshop-storage
+    cloud:
+        config:
+            discovery:
+                enabled: true
+                service-id: weshop-config-server
+            name: weshop-storage,datasource,common
+            profile: dev
+    main:
+        allow-bean-definition-overriding: true

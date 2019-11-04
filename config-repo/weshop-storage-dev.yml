@@ -1,0 +1,30 @@
+weshop:
+    storage:
+        active: local
+        aliyun:
+            accessKeyId: 111111
+            accessKeySecret: xxxxxx
+            bucketName: litemall
+            endpoint: oss-cn-shenzhen.aliyuncs.com
+        local:
+            address: http://localhost:8031/shop/storage/fetch/
+            storagePath: storage
+        qiniu:
+            accessKey: 111111
+            bucketName: litemall
+            endpoint: http://pd5cb6ulu.bkt.clouddn.com
+            secretKey: xxxxxx
+        tencent:
+            bucketName: litemall
+            region: xxxxxx
+            secretId: 111111
+            secretKey: xxxxxx
+    swagger:
+        basePackage: tech.wetech.weshop.storage.controller
+        description: 对象存储服务API文档
+        title: 对象存储服务API
+5
+debug: true
+logging:
+    level:
+        root: debug
