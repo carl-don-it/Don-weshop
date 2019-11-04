@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: weshop-user
   datasource:
     druid:
       url: ${MYSQL_URL:jdbc:mysql://localhost:3306/weshop?characterEncoding=utf-8&serverTimezone=UTC}

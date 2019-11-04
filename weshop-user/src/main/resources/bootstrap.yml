@@ -12,7 +12,7 @@ eureka:
 server:
     port: ${PORT:8011}
     servlet:
-      context-path: /shop
+        context-path: /shop
 
 spring:
     application:

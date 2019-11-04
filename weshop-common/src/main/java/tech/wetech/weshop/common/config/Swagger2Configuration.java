@@ -23,7 +23,7 @@ public class Swagger2Configuration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("tech.wetech.weshop"))
+                .apis(RequestHandlerSelectors.basePackage("tech.wetech.weshop"))//focus 可以把这个地址配置到配置文件中去
                 .paths(PathSelectors.any())
                 .build();
     }

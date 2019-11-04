@@ -23,7 +23,7 @@ weshop:
         basePackage: tech.wetech.weshop.storage.controller
         description: 对象存储服务API文档
         title: 对象存储服务API
-5
+
 debug: true
 logging:
     level:
